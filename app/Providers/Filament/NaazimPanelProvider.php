@@ -25,8 +25,8 @@ class NaazimPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('naazim')
-            ->path('naazim')
+            ->id('admin')
+            ->path('admin')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
