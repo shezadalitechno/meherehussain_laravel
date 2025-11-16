@@ -1,3 +1,8 @@
+@php
+    $headerSetting = \App\Models\HeaderSetting::first();
+    $siteTitle = $headerSetting?->site_title ?? config('app.name');
+    $siteDescription = $headerSetting?->tagline ?? 'The Hadith of the Prophet Muhammad (صلى الله عليه و سلم) at your fingertips';
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -5,21 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Mehere Hussain')</title>
-    <meta name="description" content="@yield('description', 'The Hadith of the Prophet Muhammad (صلى الله عليه و سلم) at your fingertips')">
+    <title>@yield('title', $siteTitle)</title>
+    <meta name="description" content="@yield('description', $siteDescription)">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', 'Mehere Hussain')">
-    <meta property="og:description" content="@yield('description', 'The Hadith of theProphet Muhammad (صلى الله عليه و سلم) at your fingertips')">
+    <meta property="og:title" content="@yield('title', $siteTitle)">
+    <meta property="og:description" content="@yield('description', $siteDescription)">
     <meta property="og:image" content="@yield('og_image', asset('favicon.svg'))">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
-    <meta property="twitter:title" content="@yield('title', 'Mehere Hussain')">
-    <meta property="twitter:description" content="@yield('description', 'The Hadith of the Prophet Muhammad (صلى الله عليه و سلم) at your fingertips')">
+    <meta property="twitter:title" content="@yield('title', $siteTitle)">
+    <meta property="twitter:description" content="@yield('description', $siteDescription)">
     <meta property="twitter:image" content="@yield('og_image', asset('favicon.svg'))">
 
     <!-- Fonts -->

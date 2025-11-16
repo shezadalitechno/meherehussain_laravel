@@ -23,6 +23,8 @@ class Hadith extends Model
         'text_hindi',
         'reference_number',
         'grade',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [

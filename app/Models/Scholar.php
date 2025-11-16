@@ -16,6 +16,8 @@ class Scholar extends Model
         'slug',
         'biography',
         'era',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [

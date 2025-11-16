@@ -18,6 +18,8 @@ class Chapter extends Model
         'book_id',
         'chapter_number',
         'description',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [

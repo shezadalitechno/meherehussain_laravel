@@ -18,6 +18,8 @@ class Collection extends Model
         'description',
         'scholar_id',
         'publication_info',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [

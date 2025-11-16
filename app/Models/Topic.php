@@ -15,6 +15,8 @@ class Topic extends Model
         'title',
         'slug',
         'description',
+        'meta_title',
+        'meta_description',
     ];
 
     protected static function boot()

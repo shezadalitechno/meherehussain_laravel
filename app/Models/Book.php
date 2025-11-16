@@ -18,6 +18,8 @@ class Book extends Model
         'collection_id',
         'book_number',
         'description',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [
