@@ -14,21 +14,21 @@
         ]
     ])
 
-    <div class="card bg-base-100 shadow-xl">
+    <div class="card rounded-3xl">
         <div class="card-body">
             <div class="flex justify-between items-start mb-4">
                 <h1 class="text-3xl font-bold">
                     Hadith {{ $hadith->reference_number }}
                 </h1>
                 @if($hadith->grade)
-                    <span class="badge badge-lg badge-{{ $hadith->grade === 'Sahih' ? 'success' : ($hadith->grade === 'Hasan' ? 'info' : 'warning') }}">
+                    <span class="badge badge-lg rounded-full">
                         {{ $hadith->grade }}
                     </span>
                 @endif
             </div>
 
             <div class="mb-6">
-                <div class="text-sm text-base-content/70 mb-4">
+                <div class="text-sm opacity-70 mb-4">
                     <p><strong>Collection:</strong> <a href="{{ route('collections.show', $hadith->collection) }}" class="link link-primary">{{ $hadith->collection->title }}</a></p>
                     <p><strong>Book:</strong> <a href="{{ route('books.show', ['collection' => $hadith->collection, 'book' => $hadith->book]) }}" class="link link-primary">{{ $hadith->book->title }}</a></p>
                     <p><strong>Chapter:</strong> <a href="{{ route('chapters.show', ['collection' => $hadith->collection, 'book' => $hadith->book, 'chapter' => $hadith->chapter]) }}" class="link link-primary">{{ $hadith->chapter->title }}</a></p>
@@ -101,7 +101,7 @@
                     <h2 class="text-2xl font-bold mb-4">Topics</h2>
                     <div class="flex flex-wrap gap-2">
                         @foreach($hadith->topics as $topic)
-                            <a href="{{ route('topics.show', $topic) }}" class="badge badge-primary badge-lg">{{ $topic->title }}</a>
+                            <a href="{{ route('topics.show', $topic) }}" class="badge badge-primary badge-lg rounded-full">{{ $topic->title }}</a>
                         @endforeach
                     </div>
                 </div>

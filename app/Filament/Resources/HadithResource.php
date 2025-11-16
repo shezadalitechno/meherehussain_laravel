@@ -4,9 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\HadithResource\Pages;
 use App\Models\Hadith;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,9 +30,9 @@ class HadithResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Tabs::make('HadithContent')
+                Tabs::make('HadithContent')
                     ->tabs([
-                        Forms\Components\Tabs\Tab::make('Basic Information')
+                        Tab::make('Basic Information')
                             ->schema([
                                 Forms\Components\Select::make('collection_id')
                                     ->relationship('collection', 'title')
@@ -66,35 +69,35 @@ class HadithResource extends Resource
                                     ])
                                     ->searchable(),
                             ]),
-                        Forms\Components\Tabs\Tab::make('Arabic Text')
+                        Tab::make('Arabic Text')
                             ->schema([
                                 Forms\Components\RichEditor::make('text_arabic')
                                     ->required()
                                     ->columnSpanFull(),
                             ]),
-                        Forms\Components\Tabs\Tab::make('English Translation')
+                        Tab::make('English Translation')
                             ->schema([
                                 Forms\Components\RichEditor::make('text_english')
                                     ->required()
                                     ->columnSpanFull(),
                             ]),
-                        Forms\Components\Tabs\Tab::make('Hinglish Translation')
+                        Tab::make('Hinglish Translation')
                             ->schema([
                                 Forms\Components\RichEditor::make('text_hinglish')
                                     ->required()
                                     ->columnSpanFull(),
                             ]),
-                        Forms\Components\Tabs\Tab::make('Urdu Translation')
+                        Tab::make('Urdu Translation')
                             ->schema([
                                 Forms\Components\RichEditor::make('text_urdu')
                                     ->columnSpanFull(),
                             ]),
-                        Forms\Components\Tabs\Tab::make('Hindi Translation')
+                        Tab::make('Hindi Translation')
                             ->schema([
                                 Forms\Components\RichEditor::make('text_hindi')
                                     ->columnSpanFull(),
                             ]),
-                        Forms\Components\Tabs\Tab::make('Narrators')
+                        Tab::make('Narrators')
                             ->schema([
                                 Forms\Components\Repeater::make('narrators')
                                     ->relationship()
@@ -106,7 +109,7 @@ class HadithResource extends Resource
                                     ->defaultItems(0)
                                     ->columnSpanFull(),
                             ]),
-                        Forms\Components\Tabs\Tab::make('Topics')
+                        Tab::make('Topics')
                             ->schema([
                                 Forms\Components\Select::make('topics')
                                     ->relationship('topics', 'title')
@@ -163,13 +166,18 @@ class HadithResource extends Resource
                         'Mawdu' => 'Mawdu',
                     ]),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                Actions\Action::make('view_frontend')
+                    ->label('View Frontend')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(fn (Hadith $record): string => route('hadith.show', $record))
+                    ->openUrlInNewTab(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

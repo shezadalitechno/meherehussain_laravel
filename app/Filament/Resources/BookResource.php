@@ -4,9 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BookResource\Pages;
 use App\Models\Book;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,7 +29,7 @@ class BookResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Basic Information')
+                Section::make('Basic Information')
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
@@ -45,7 +47,7 @@ class BookResource extends Resource
                             ->numeric()
                             ->default(1),
                     ]),
-                Forms\Components\Section::make('Description')
+                Section::make('Description')
                     ->schema([
                         Forms\Components\RichEditor::make('description')
                             ->columnSpanFull(),
@@ -79,13 +81,18 @@ class BookResource extends Resource
                     ->searchable()
                     ->preload(),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                Actions\Action::make('view_frontend')
+                    ->label('View Frontend')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(fn (Book $record): string => route('books.show', ['collection' => $record->collection, 'book' => $record]))
+                    ->openUrlInNewTab(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

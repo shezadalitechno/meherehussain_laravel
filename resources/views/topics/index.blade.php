@@ -10,15 +10,15 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($topics as $topic)
-            <div class="card bg-base-100 shadow-xl">
+            <div class="card rounded-3xl">
                 <div class="card-body">
                     <h2 class="card-title">{{ $topic->title }}</h2>
                     @if($topic->description)
                         <p class="text-sm">{{ $topic->description }}</p>
                     @endif
-                    <p class="text-sm text-base-content/70">{{ $topic->hadith_count }} hadith</p>
+                    <p class="text-sm opacity-70">{{ $topic->hadith_count }} hadith</p>
                     <div class="card-actions justify-end">
-                        <a href="{{ route('topics.show', $topic) }}" class="btn btn-primary">View Topic</a>
+                        <a href="{{ route('topics.show', $topic) }}" class="btn btn-primary rounded-full">View Topic</a>
                     </div>
                 </div>
             </div>

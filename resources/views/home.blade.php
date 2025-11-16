@@ -4,22 +4,24 @@
 @section('description', 'The Hadith of the Prophet Muhammad (صلى الله عليه و سلم) at your fingertips')
 
 @section('content')
-<div class="hero bg-base-200 py-16">
+<div class="hero py-16">
     <div class="hero-content text-center">
-        <div class="max-w-md">
+        <div class="max-w-md neumorphic-flat p-8 rounded-3xl">
             <h1 class="text-5xl font-bold">Mehere Hussain</h1>
             <p class="py-6">The Hadith of the Prophet Muhammad (صلى الله عليه و سلم) at your fingertips</p>
             <div class="flex justify-center gap-4">
-                <a href="{{ route('collections.index') }}" class="btn btn-primary">Browse Collections</a>
-                <a href="{{ route('search.index') }}" class="btn btn-outline">Search Hadith</a>
+                <a href="{{ route('collections.index') }}" class="btn btn-primary rounded-full">Browse Collections</a>
+                <a href="{{ route('search.index') }}" class="btn btn-outline rounded-full">Search Hadith</a>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container mx-auto px-4 py-8">
-    <div class="mb-8">
-        @include('components.search-bar')
+    <div class="flex justify-center mb-12">
+        <div class="w-full lg:w-3/5">
+            @include('components.search-bar')
+        </div>
     </div>
 
     <section class="mb-12">
@@ -30,7 +32,7 @@
             @endforeach
         </div>
         <div class="text-center mt-6">
-            <a href="{{ route('collections.index') }}" class="btn btn-outline">View All Collections</a>
+            <a href="{{ route('collections.index') }}" class="btn btn-outline rounded-full">View All Collections</a>
         </div>
     </section>
 

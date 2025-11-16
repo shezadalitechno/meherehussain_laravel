@@ -4,9 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ChapterResource\Pages;
 use App\Models\Chapter;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,7 +29,7 @@ class ChapterResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Basic Information')
+                Section::make('Basic Information')
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
@@ -45,7 +47,7 @@ class ChapterResource extends Resource
                             ->numeric()
                             ->default(1),
                     ]),
-                Forms\Components\Section::make('Description')
+                Section::make('Description')
                     ->schema([
                         Forms\Components\RichEditor::make('description')
                             ->columnSpanFull(),
@@ -79,13 +81,18 @@ class ChapterResource extends Resource
                     ->searchable()
                     ->preload(),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                Actions\Action::make('view_frontend')
+                    ->label('View Frontend')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(fn (Chapter $record): string => route('chapters.show', ['collection' => $record->book->collection, 'book' => $record->book, 'chapter' => $record]))
+                    ->openUrlInNewTab(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

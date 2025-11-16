@@ -4,9 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,7 +29,7 @@ class PageResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Basic Information')
+                Section::make('Basic Information')
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
@@ -36,7 +38,7 @@ class PageResource extends Resource
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
                     ]),
-                Forms\Components\Section::make('Content')
+                Section::make('Content')
                     ->schema([
                         Forms\Components\RichEditor::make('content')
                             ->required()
@@ -63,13 +65,18 @@ class PageResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                Actions\Action::make('view_frontend')
+                    ->label('View Frontend')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(fn (Page $record): string => route('pages.show', $record))
+                    ->openUrlInNewTab(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

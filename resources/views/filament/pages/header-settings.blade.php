@@ -2,10 +2,13 @@
     <form wire:submit="save">
         {{ $this->form }}
 
-        <x-filament-panels::form.actions
-            :actions="$this->getFormActions()"
-            :full-width="false"
-        />
+        <div class="flex gap-3 justify-end mt-6">
+            @foreach ($this->getFormActions() as $action)
+                {{ $action }}
+            @endforeach
+        </div>
     </form>
+
+    <x-filament-actions::modals />
 </x-filament-panels::page>
 

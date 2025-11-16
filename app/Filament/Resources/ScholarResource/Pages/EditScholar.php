@@ -13,6 +13,11 @@ class EditScholar extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('view_frontend')
+                ->label('View Frontend')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->url(fn (): string => route('scholars.show', $this->record))
+                ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];
     }

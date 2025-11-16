@@ -10,5 +10,18 @@
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+<!-- Theme initialization script - must run before styles to prevent flash -->
+<script>
+    (function() {
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+    })();
+</script>
+
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @fluxAppearance

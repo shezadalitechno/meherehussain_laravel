@@ -4,10 +4,10 @@
     $footerLanguages = $footerSetting?->languages()->orderBy('order')->get() ?? collect();
 @endphp
 
-<footer class="footer footer-center p-10 bg-base-200 text-base-content">
+<footer class="footer footer-center p-10">
     <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
+            <div class="neumorphic-flat p-6 rounded-3xl">
                 <h3 class="font-bold text-lg mb-4">About</h3>
                 @if($footerSetting?->about_text)
                     <div class="prose prose-sm max-w-none">
@@ -15,19 +15,19 @@
                     </div>
                 @endif
             </div>
-            <div>
+            <div class="neumorphic-flat p-6 rounded-3xl">
                 <h3 class="font-bold text-lg mb-4">Quick Links</h3>
                 <ul class="menu menu-vertical">
                     @foreach($footerLinks as $link)
-                        <li><a href="{{ $link->link }}">{{ $link->label }}</a></li>
+                        <li><a href="{{ $link->link }}" class="rounded-full">{{ $link->label }}</a></li>
                     @endforeach
                 </ul>
             </div>
-            <div>
+            <div class="neumorphic-flat p-6 rounded-3xl">
                 <h3 class="font-bold text-lg mb-4">Contact</h3>
                 @if($footerSetting?->contact_email)
                     <p class="mb-2">
-                        <a href="mailto:{{ $footerSetting->contact_email }}" class="link link-hover">
+                        <a href="mailto:{{ $footerSetting->contact_email }}" class="link link-hover rounded-lg">
                             {{ $footerSetting->contact_email }}
                         </a>
                     </p>
@@ -39,7 +39,7 @@
                     <p class="mb-2 text-sm">{{ $footerSetting->contact_address }}</p>
                 @endif
                 @if($footerSetting?->donate_link)
-                    <a href="{{ $footerSetting->donate_link }}" class="btn btn-primary btn-sm mt-4">Donate</a>
+                    <a href="{{ $footerSetting->donate_link }}" class="btn btn-primary btn-sm mt-4 rounded-full">Donate</a>
                 @endif
             </div>
         </div>
@@ -48,12 +48,12 @@
                 <h3 class="font-bold text-lg mb-4">Supported Languages</h3>
                 <div class="flex flex-wrap gap-2 justify-center">
                     @foreach($footerLanguages as $lang)
-                        <span class="badge badge-outline">{{ $lang->language }}</span>
+                        <span class="badge badge-outline rounded-full">{{ $lang->language }}</span>
                     @endforeach
                 </div>
             </div>
         @endif
-        <div class="mt-8 border-t pt-4">
+        <div class="mt-8 pt-4">
             @php
                 $headerSetting = \App\Models\HeaderSetting::first();
             @endphp

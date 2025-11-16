@@ -9,8 +9,8 @@
         <h2 class="text-3xl font-bold mb-4">Page Not Found</h2>
         <p class="text-lg mb-8">The page you are looking for does not exist.</p>
         <div class="flex justify-center gap-4">
-            <a href="{{ route('home') }}" class="btn btn-primary">Go Home</a>
-            <a href="{{ route('collections.index') }}" class="btn btn-outline">Browse Collections</a>
+            <a href="{{ route('home') }}" class="btn btn-primary rounded-full">Go Home</a>
+            <a href="{{ route('collections.index') }}" class="btn btn-outline rounded-full">Browse Collections</a>
         </div>
     </div>
 </div>

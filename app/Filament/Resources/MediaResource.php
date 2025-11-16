@@ -4,9 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MediaResource\Pages;
 use App\Models\Media;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,7 +29,7 @@ class MediaResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('File Information')
+                Section::make('File Information')
                     ->schema([
                         Forms\Components\FileUpload::make('filename')
                             ->required()
@@ -49,7 +51,7 @@ class MediaResource extends Resource
                             ->maxLength(255)
                             ->columnSpanFull(),
                     ]),
-                Forms\Components\Section::make('Image Settings')
+                Section::make('Image Settings')
                     ->schema([
                         Forms\Components\TextInput::make('focal_x')
                             ->numeric()
@@ -102,13 +104,13 @@ class MediaResource extends Resource
                         'image/webp' => 'WebP',
                     ]),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

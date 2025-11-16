@@ -13,6 +13,11 @@ class EditChapter extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('view_frontend')
+                ->label('View Frontend')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->url(fn (): string => route('chapters.show', ['collection' => $this->record->book->collection, 'book' => $this->record->book, 'chapter' => $this->record]))
+                ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];
     }

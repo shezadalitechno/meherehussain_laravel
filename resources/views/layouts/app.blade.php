@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,22 +27,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Theme initialization script - must run before styles to prevent flash -->
+    <script>
+        (function() {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+        })();
+    </script>
+
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Structured Data -->
     @include('components.structured-data')
 </head>
-<body class="min-h-screen bg-base-100">
+<body class="min-h-screen">
     <div class="flex flex-col min-h-screen">
         @include('components.header')
 
-        <main class="flex-grow">
+        <main class="flex-grow pb-16 lg:pb-0">
             @yield('content')
         </main>
 
         @include('components.footer')
     </div>
+    
+    @include('components.bottom-nav')
 
     @stack('scripts')
 </body>

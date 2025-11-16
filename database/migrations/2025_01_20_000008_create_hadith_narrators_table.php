@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('hadith_narrators', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hadith_id')->constrained('hadith')->onDelete('cascade');
+            $table->foreignId('hadith_id')->constrained('hadiths')->onDelete('cascade');
             $table->string('narrator');
             $table->timestamps();
             

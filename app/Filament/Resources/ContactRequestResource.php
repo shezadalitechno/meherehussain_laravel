@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactRequestResource\Pages;
 use App\Models\ContactRequest;
+use Filament\Actions;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -74,8 +75,8 @@ class ContactRequestResource extends Resource
                             );
                     }),
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
+            ->recordActions([
+                Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 //

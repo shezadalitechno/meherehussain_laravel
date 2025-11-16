@@ -11,7 +11,7 @@
         ]
     ])
 
-    <div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card rounded-3xl mb-8">
         <div class="card-body">
             <h1 class="text-4xl font-bold mb-4">{{ $scholar->name }}</h1>
             @if($scholar->era)

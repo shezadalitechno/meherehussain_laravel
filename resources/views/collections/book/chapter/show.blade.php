@@ -13,7 +13,7 @@
         ]
     ])
 
-    <div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card rounded-3xl mb-8">
         <div class="card-body">
             <h1 class="text-4xl font-bold mb-4">{{ $chapter->title }}</h1>
             <p class="text-lg mb-4">Chapter {{ $chapter->chapter_number }} of <a href="{{ route('books.show', ['collection' => $chapter->book->collection, 'book' => $chapter->book]) }}" class="link link-primary">{{ $chapter->book->title }}</a></p>

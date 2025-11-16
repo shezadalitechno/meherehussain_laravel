@@ -1,12 +1,12 @@
 @props(['hadith'])
 
-<div class="card bg-base-100 shadow-xl">
+<div class="card rounded-3xl">
     <div class="card-body">
         <div class="flex justify-between items-start mb-4">
             <h2 class="card-title">
-                <span class="badge badge-primary">{{ $hadith->reference_number }}</span>
+                <span class="badge badge-primary rounded-full">{{ $hadith->reference_number }}</span>
                 @if($hadith->grade)
-                    <span class="badge badge-{{ $hadith->grade === 'Sahih' ? 'success' : ($hadith->grade === 'Hasan' ? 'info' : 'warning') }}">
+                    <span class="badge rounded-full">
                         {{ $hadith->grade }}
                     </span>
                 @endif
@@ -18,7 +18,7 @@
                 @include('components.rich-text', ['content' => $hadith->text_arabic])
             </div>
             
-            <div class="text-sm text-base-content/70">
+            <div class="text-sm opacity-70">
                 <p><strong>Collection:</strong> {{ $hadith->collection->title }}</p>
                 <p><strong>Book:</strong> {{ $hadith->book->title }}</p>
                 <p><strong>Chapter:</strong> {{ $hadith->chapter->title }}</p>
@@ -26,7 +26,7 @@
         </div>
         
         <div class="card-actions justify-end">
-            <a href="{{ route('hadith.show', $hadith) }}" class="btn btn-primary btn-sm">Read More</a>
+            <a href="{{ route('hadith.show', $hadith) }}" class="btn btn-primary btn-sm rounded-full">Read More</a>
         </div>
     </div>
 </div>

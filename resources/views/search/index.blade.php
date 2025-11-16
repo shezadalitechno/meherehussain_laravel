@@ -16,7 +16,7 @@
         <div class="mb-4">
             <p class="text-lg">Search results for: <strong>{{ request('q') }}</strong></p>
             @if(isset($results) && $results->count() > 0)
-                <p class="text-sm text-base-content/70">{{ $results->total() }} result(s) found</p>
+                <p class="text-sm opacity-70">{{ $results->total() }} result(s) found</p>
             @endif
         </div>
 

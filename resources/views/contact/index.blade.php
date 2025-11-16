@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <div class="card bg-base-100 shadow-xl">
+    <div class="card rounded-3xl">
         <div class="card-body">
             <form action="{{ route('contact.store') }}" method="POST">
                 @csrf
@@ -22,7 +22,7 @@
                     <label class="label">
                         <span class="label-text">Name</span>
                     </label>
-                    <input type="text" name="name" class="input input-bordered" required value="{{ old('name') }}">
+                    <input type="text" name="name" class="input input-bordered rounded-full" required value="{{ old('name') }}">
                     @error('name')
                         <label class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>
@@ -34,7 +34,7 @@
                     <label class="label">
                         <span class="label-text">Email</span>
                     </label>
-                    <input type="email" name="email" class="input input-bordered" required value="{{ old('email') }}">
+                    <input type="email" name="email" class="input input-bordered rounded-full" required value="{{ old('email') }}">
                     @error('email')
                         <label class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>
@@ -46,7 +46,7 @@
                     <label class="label">
                         <span class="label-text">Message</span>
                     </label>
-                    <textarea name="message" class="textarea textarea-bordered h-32" required>{{ old('message') }}</textarea>
+                    <textarea name="message" class="textarea textarea-bordered h-32 rounded-full" required>{{ old('message') }}</textarea>
                     @error('message')
                         <label class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-control mt-6">
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary rounded-full">Send Message</button>
                 </div>
             </form>
         </div>

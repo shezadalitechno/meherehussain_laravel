@@ -13,6 +13,11 @@ class EditBook extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('view_frontend')
+                ->label('View Frontend')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->url(fn (): string => route('books.show', ['collection' => $this->record->collection, 'book' => $this->record]))
+                ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];
     }

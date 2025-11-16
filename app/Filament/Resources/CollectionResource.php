@@ -4,9 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CollectionResource\Pages;
 use App\Models\Collection;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,7 +29,7 @@ class CollectionResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Basic Information')
+                Section::make('Basic Information')
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
@@ -44,12 +46,12 @@ class CollectionResource extends Resource
                             ->rows(3)
                             ->columnSpanFull(),
                     ]),
-                Forms\Components\Section::make('Description')
+                Section::make('Description')
                     ->schema([
                         Forms\Components\RichEditor::make('description')
                             ->columnSpanFull(),
                     ]),
-                Forms\Components\Section::make('Tags')
+                Section::make('Tags')
                     ->schema([
                         Forms\Components\Repeater::make('tags')
                             ->relationship()
@@ -88,13 +90,18 @@ class CollectionResource extends Resource
                     ->searchable()
                     ->preload(),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                Actions\Action::make('view_frontend')
+                    ->label('View Frontend')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(fn (Collection $record): string => route('collections.show', $record))
+                    ->openUrlInNewTab(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

@@ -12,7 +12,7 @@
         ]
     ])
 
-    <div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card rounded-3xl mb-8">
         <div class="card-body">
             <h1 class="text-4xl font-bold mb-4">{{ $book->title }}</h1>
             <p class="text-lg mb-4">Book {{ $book->book_number }} of <a href="{{ route('collections.show', $book->collection) }}" class="link link-primary">{{ $book->collection->title }}</a></p>
@@ -27,12 +27,12 @@
     <h2 class="text-2xl font-bold mb-6">Chapters</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach($book->chapters as $chapter)
-            <div class="card bg-base-100 shadow">
+            <div class="card rounded-3xl">
                 <div class="card-body">
                     <h3 class="card-title">{{ $chapter->title }}</h3>
                     <p class="text-sm">Chapter {{ $chapter->chapter_number }}</p>
                     <div class="card-actions justify-end">
-                        <a href="{{ route('chapters.show', ['collection' => $book->collection, 'book' => $book, 'chapter' => $chapter]) }}" class="btn btn-primary btn-sm">View Chapter</a>
+                        <a href="{{ route('chapters.show', ['collection' => $book->collection, 'book' => $book, 'chapter' => $chapter]) }}" class="btn btn-primary btn-sm rounded-full">View Chapter</a>
                     </div>
                 </div>
             </div>
