@@ -251,39 +251,89 @@ select:focus[data-flux-control] {
     }
 
     /* Inputs - Hard Neumorphism */
+    input[type="text"],
+    input[type="search"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="url"],
     .input,
     .input-bordered {
-        background: var(--color-neu-base);
-        border-radius: 50px;
-        border: 1px solid var(--color-neu-base);
+        background: var(--color-neu-base) !important;
+        border-radius: 50px !important;
+        border: 1px solid var(--color-neu-base) !important;
         box-shadow: inset 30px 30px 80px var(--color-neu-shadow-dark),
-                    inset -30px -30px 80px var(--color-neu-shadow-light);
-        color: var(--color-neu-text);
-        transition: all 0.3s;
+                    inset -30px -30px 80px var(--color-neu-shadow-light) !important;
+        color: var(--color-neu-text) !important;
+        transition: all 0.3s !important;
     }
 
+    input[type="text"]::placeholder,
+    input[type="search"]::placeholder,
+    input[type="email"]::placeholder,
+    input[type="password"]::placeholder,
+    input[type="number"]::placeholder,
+    input[type="tel"]::placeholder,
+    input[type="url"]::placeholder,
+    .input::placeholder,
+    .input-bordered::placeholder {
+        color: var(--color-zinc-500) !important;
+        opacity: 1 !important;
+    }
+
+    .dark input[type="text"]::placeholder,
+    .dark input[type="search"]::placeholder,
+    .dark input[type="email"]::placeholder,
+    .dark input[type="password"]::placeholder,
+    .dark input[type="number"]::placeholder,
+    .dark input[type="tel"]::placeholder,
+    .dark input[type="url"]::placeholder,
+    .dark .input::placeholder,
+    .dark .input-bordered::placeholder {
+        color: var(--color-zinc-400) !important;
+        opacity: 1 !important;
+    }
+
+    input[type="text"]:focus,
+    input[type="search"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus,
+    input[type="tel"]:focus,
+    input[type="url"]:focus,
     .input:focus,
     .input-bordered:focus {
-        outline: none;
+        outline: none !important;
         box-shadow: inset 15px 15px 40px var(--color-neu-shadow-dark),
-                    inset -15px -15px 40px var(--color-neu-shadow-light);
+                    inset -15px -15px 40px var(--color-neu-shadow-light) !important;
     }
 
     /* Textarea - Hard Neumorphism */
     textarea {
-        background: var(--color-neu-base);
-        border-radius: 50px;
-        border: 1px solid var(--color-neu-base);
+        background: var(--color-neu-base) !important;
+        border-radius: 50px !important;
+        border: 1px solid var(--color-neu-base) !important;
         box-shadow: inset 30px 30px 80px var(--color-neu-shadow-dark),
-                    inset -30px -30px 80px var(--color-neu-shadow-light);
-        color: var(--color-neu-text);
-        transition: all 0.3s;
+                    inset -30px -30px 80px var(--color-neu-shadow-light) !important;
+        color: var(--color-neu-text) !important;
+        transition: all 0.3s !important;
+    }
+
+    textarea::placeholder {
+        color: var(--color-zinc-500) !important;
+        opacity: 1 !important;
+    }
+
+    .dark textarea::placeholder {
+        color: var(--color-zinc-400) !important;
+        opacity: 1 !important;
     }
 
     textarea:focus {
-        outline: none;
+        outline: none !important;
         box-shadow: inset 15px 15px 40px var(--color-neu-shadow-dark),
-                    inset -15px -15px 40px var(--color-neu-shadow-light);
+                    inset -15px -15px 40px var(--color-neu-shadow-light) !important;
     }
 
     /* Badges - Hard Neumorphism */
@@ -486,19 +536,29 @@ select:focus[data-flux-control] {
 
 /* Flux UI Component Overrides - Hard Neumorphism */
 [data-flux-control] {
-    background: var(--color-neu-base);
-    border-radius: 50px;
-    border: 1px solid var(--color-neu-base);
+    background: var(--color-neu-base) !important;
+    border-radius: 50px !important;
+    border: 1px solid var(--color-neu-base) !important;
     box-shadow: inset 30px 30px 80px var(--color-neu-shadow-dark),
-                inset -30px -30px 80px var(--color-neu-shadow-light);
-    color: var(--color-neu-text);
-    transition: all 0.3s;
+                inset -30px -30px 80px var(--color-neu-shadow-light) !important;
+    color: var(--color-neu-text) !important;
+    transition: all 0.3s !important;
+}
+
+[data-flux-control]::placeholder {
+    color: var(--color-zinc-500) !important;
+    opacity: 1 !important;
+}
+
+.dark [data-flux-control]::placeholder {
+    color: var(--color-zinc-400) !important;
+    opacity: 1 !important;
 }
 
 [data-flux-control]:focus {
-    outline: none;
+    outline: none !important;
     box-shadow: inset 15px 15px 40px var(--color-neu-shadow-dark),
-                inset -15px -15px 40px var(--color-neu-shadow-light);
+                inset -15px -15px 40px var(--color-neu-shadow-light) !important;
 }
 
 input:focus[data-flux-control],
