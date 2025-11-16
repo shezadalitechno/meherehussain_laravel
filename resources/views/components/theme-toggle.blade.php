@@ -1,9 +1,9 @@
-<label class="swap swap-rotate btn btn-ghost btn-circle !p-2">
-    <input type="checkbox" class="theme-controller" value="dark" />
-    <div class="swap-off size-5">
+<label class="swap swap-rotate relative inline-flex items-center justify-center w-12 h-12 rounded-full cursor-pointer transition-all duration-300 theme-toggle-button">
+    <input type="checkbox" class="theme-controller sr-only" value="dark" />
+    <div class="swap-off flex items-center justify-center w-full h-full transition-opacity duration-300">
         @include('flux.icon.sun', ['variant' => 'mini'])
     </div>
-    <div class="swap-on size-5">
+    <div class="swap-on flex items-center justify-center w-full h-full transition-opacity duration-300">
         @include('flux.icon.moon', ['variant' => 'mini'])
     </div>
 </label>

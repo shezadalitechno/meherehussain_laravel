@@ -1135,42 +1135,43 @@ input[type="radio"]:checked::before,
 }
 
 /* Theme Toggle - Floating Neumorphism */
-.theme-controller,
-.swap input[type="checkbox"] {
-    width: 3em !important;
-    height: 1.5em !important;
-    border-radius: 50px !important;
-    background: var(--color-neu-base) !important;
-    border: 1px solid var(--color-neu-base) !important;
-    box-shadow: inset 12px 12px 30px rgba(0, 0, 0, 0.15),
-                inset -12px -12px 30px rgba(255, 255, 255, 0.7),
-                10px 10px 25px rgba(0, 0, 0, 0.1),
-                -10px -10px 25px rgba(255, 255, 255, 0.8),
-                0 5px 15px rgba(0, 0, 0, 0.08) !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    position: relative !important;
+.theme-controller {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-.theme-controller:hover,
-.swap input[type="checkbox"]:hover {
-    box-shadow: inset 10px 10px 25px rgba(0, 0, 0, 0.15),
-                inset -10px -10px 25px rgba(255, 255, 255, 0.7),
-                12px 12px 30px rgba(0, 0, 0, 0.12),
-                -12px -12px 30px rgba(255, 255, 255, 0.9),
-                0 7px 20px rgba(0, 0, 0, 0.1) !important;
-    transform: translateY(-1px) !important;
+label.swap {
+    color: var(--color-neu-text);
 }
 
-.theme-controller:checked,
-.swap input[type="checkbox"]:checked {
-    box-shadow: inset 8px 8px 20px rgba(0, 0, 0, 0.2),
-                inset -8px -8px 20px rgba(255, 255, 255, 0.6),
-                8px 8px 20px rgba(0, 0, 0, 0.1),
-                -8px -8px 20px rgba(255, 255, 255, 0.7),
-                0 4px 12px rgba(0, 0, 0, 0.1) !important;
+label.swap:hover {
+    box-shadow: inset 6px 6px 12px var(--color-neu-shadow-dark),
+                inset -6px -6px 12px var(--color-neu-shadow-light),
+                6px 6px 12px var(--color-neu-shadow-dark),
+                -6px -6px 12px var(--color-neu-shadow-light),
+                0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px) scale(1.05);
+}
+
+label.swap:active {
+    box-shadow: inset 10px 10px 20px var(--color-neu-shadow-dark),
+                inset -10px -10px 20px var(--color-neu-shadow-light),
+                2px 2px 4px var(--color-neu-shadow-dark),
+                -2px -2px 4px var(--color-neu-shadow-light) !important;
+    transform: translateY(0) scale(0.98);
+}
+
+.swap-off,
+.swap-on {
+    color: var(--color-neu-text);
+}
+
+.swap-off svg,
+.swap-on svg {
+    stroke: currentColor;
+    fill: none;
 }
 
 /* Flux Radio Group - Neumorphism */
