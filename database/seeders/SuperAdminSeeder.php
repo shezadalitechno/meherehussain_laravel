@@ -21,11 +21,11 @@ class SuperAdminSeeder extends Seeder
         );
 
         // Create or update the super admin user
-        $user = User::firstOrCreate(
+        $user = User::updateOrCreate(
             ['email' => env('SUPER_ADMIN_EMAIL', 'admin@example.com')],
             [
                 'name' => env('SUPER_ADMIN_NAME', 'Super Admin'),
-                'password' => Hash::make(env('SUPER_ADMIN_PASSWORD', 'password')),
+                'password' => Hash::make(env('SUPER_ADMIN_PASSWORD', 'Meherehussain@Gaus2025!!XX')),
                 'email_verified_at' => now(),
             ]
         );
